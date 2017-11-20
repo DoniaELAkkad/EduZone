@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EduZoneDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Branch">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="branchName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="branchNumPerSTEM" Type="Int32" Nullable="false" />
+    <Property Name="stemID" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="STEM" Relationship="Self.FK_Branches_ToTable" FromRole="Branches" ToRole="STEM" />
+    <NavigationProperty Name="GameCodings" Relationship="EduZoneDBModel.FK_GameCoding_ToTable_1" FromRole="Branch" ToRole="GameCoding" />
+  </EntityType>
+  <EntityType Name="Game">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="gameName" Type="String" MaxLength="225" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GameCodings" Relationship="EduZoneDBModel.FK_GameCoding_ToTable_3" FromRole="Game" ToRole="GameCoding" />
+    <NavigationProperty Name="Modules" Relationship="EduZoneDBModel.FK_Module_ToTable" FromRole="Game" ToRole="Module" />
+    <NavigationProperty Name="ToyReservationHistories" Relationship="EduZoneDBModel.FK_ToyReservationHistory_ToTable" FromRole="Game" ToRole="ToyReservationHistory" />
+  </EntityType>
+  <EntityType Name="STEM">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="225" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Branches" Relationship="Self.FK_Branches_ToTable" FromRole="STEM" ToRole="Branches" />
+    <NavigationProperty Name="GameCodings" Relationship="EduZoneDBModel.FK_GameCoding_ToTable" FromRole="STEM" ToRole="GameCoding" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="LoginHistories" Relationship="EduZoneDBModel.FK_LoginHistory_ToTable" FromRole="User" ToRole="LoginHistory" />
+  </EntityType>
+  <Association Name="FK_Branches_ToTable">
+    <End Role="STEM" Type="Self.STEM" Multiplicity="1" />
+    <End Role="Branches" Type="Self.Branch" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STEM">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="stemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EduZoneDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Branches" EntityType="Self.Branch" />
+    <EntitySet Name="Games" EntityType="Self.Game" />
+    <EntitySet Name="STEMs" EntityType="Self.STEM" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Branches_ToTable" Association="Self.FK_Branches_ToTable">
+      <End Role="STEM" EntitySet="STEMs" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <EntitySet Name="LoginHistories" EntityType="EduZoneDBModel.LoginHistory" />
+    <EntitySet Name="Students" EntityType="EduZoneDBModel.Student" />
+    <AssociationSet Name="FK_LoginHistory_ToTable" Association="EduZoneDBModel.FK_LoginHistory_ToTable">
+      <End Role="User" EntitySet="Users" />
+      <End Role="LoginHistory" EntitySet="LoginHistories" />
+    </AssociationSet>
+    <EntitySet Name="MoneyLists" EntityType="EduZoneDBModel.MoneyList" />
+    <EntitySet Name="AgeRanges" EntityType="EduZoneDBModel.AgeRange" />
+    <EntitySet Name="GameCodings" EntityType="EduZoneDBModel.GameCoding" />
+    <AssociationSet Name="FK_GameCoding_ToTable_2" Association="EduZoneDBModel.FK_GameCoding_ToTable_2">
+      <End Role="AgeRange" EntitySet="AgeRanges" />
+      <End Role="GameCoding" EntitySet="GameCodings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameCoding_ToTable_1" Association="EduZoneDBModel.FK_GameCoding_ToTable_1">
+      <End Role="Branch" EntitySet="Branches" />
+      <End Role="GameCoding" EntitySet="GameCodings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameCoding_ToTable" Association="EduZoneDBModel.FK_GameCoding_ToTable">
+      <End Role="STEM" EntitySet="STEMs" />
+      <End Role="GameCoding" EntitySet="GameCodings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameCoding_ToTable_3" Association="EduZoneDBModel.FK_GameCoding_ToTable_3">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="GameCoding" EntitySet="GameCodings" />
+    </AssociationSet>
+    <EntitySet Name="Modules" EntityType="EduZoneDBModel.Module" />
+    <AssociationSet Name="FK_Module_ToTable" Association="EduZoneDBModel.FK_Module_ToTable">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="Module" EntitySet="Modules" />
+    </AssociationSet>
+    <EntitySet Name="StudentCourses" EntityType="EduZoneDBModel.StudentCours" />
+    <AssociationSet Name="FK_StudentCourses_ToTable_1" Association="EduZoneDBModel.FK_StudentCourses_ToTable_1">
+      <End Role="GameCoding" EntitySet="GameCodings" />
+      <End Role="StudentCours" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourses_ToTable_2" Association="EduZoneDBModel.FK_StudentCourses_ToTable_2">
+      <End Role="Module" EntitySet="Modules" />
+      <End Role="StudentCours" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourses_ToTable" Association="EduZoneDBModel.FK_StudentCourses_ToTable">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="StudentCours" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <EntitySet Name="ToyReservationHistories" EntityType="EduZoneDBModel.ToyReservationHistory" />
+    <AssociationSet Name="FK_ToyReservationHistory_ToTable" Association="EduZoneDBModel.FK_ToyReservationHistory_ToTable">
+      <End Role="Game" EntitySet="Games" />
+      <End Role="ToyReservationHistory" EntitySet="ToyReservationHistories" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="LoginHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="loginDateTimeStamp" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="logoutDateTimeStamp" Type="DateTime" Precision="7" />
+    <Property Name="totalCashAmount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <NavigationProperty Name="User" Relationship="EduZoneDBModel.FK_LoginHistory_ToTable" FromRole="LoginHistory" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="parentName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="birthDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="parentFingrePrint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="studentFingurePrint" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="StudentCourses" Relationship="EduZoneDBModel.FK_StudentCourses_ToTable" FromRole="Student" ToRole="StudentCours" />
+  </EntityType>
+  <Association Name="FK_LoginHistory_ToTable">
+    <End Type="EduZoneDBModel.User" Role="User" Multiplicity="1" />
+    <End Type="EduZoneDBModel.LoginHistory" Role="LoginHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="LoginHistory">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MoneyList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tme" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AgeRange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="minAge" Type="Int32" Nullable="false" />
+    <Property Name="maxAge" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GameCodings" Relationship="EduZoneDBModel.FK_GameCoding_ToTable_2" FromRole="AgeRange" ToRole="GameCoding" />
+  </EntityType>
+  <EntityType Name="GameCoding">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StemId" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="BranchId" Type="Int32" Nullable="false" />
+    <Property Name="AgeRangeId" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="GameId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="AgeRange" Relationship="EduZoneDBModel.FK_GameCoding_ToTable_2" FromRole="GameCoding" ToRole="AgeRange" />
+    <NavigationProperty Name="Branch" Relationship="EduZoneDBModel.FK_GameCoding_ToTable_1" FromRole="GameCoding" ToRole="Branch" />
+    <NavigationProperty Name="STEM" Relationship="EduZoneDBModel.FK_GameCoding_ToTable" FromRole="GameCoding" ToRole="STEM" />
+    <NavigationProperty Name="Game" Relationship="EduZoneDBModel.FK_GameCoding_ToTable_3" FromRole="GameCoding" ToRole="Game" />
+    <NavigationProperty Name="StudentCourses" Relationship="EduZoneDBModel.FK_StudentCourses_ToTable_1" FromRole="GameCoding" ToRole="StudentCours" />
+  </EntityType>
+  <Association Name="FK_GameCoding_ToTable_2">
+    <End Type="EduZoneDBModel.AgeRange" Role="AgeRange" Multiplicity="1" />
+    <End Type="EduZoneDBModel.GameCoding" Role="GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgeRange">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="AgeRangeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameCoding_ToTable_1">
+    <End Type="EduZoneDBModel.Branch" Role="Branch" Multiplicity="1" />
+    <End Type="EduZoneDBModel.GameCoding" Role="GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branch">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameCoding_ToTable">
+    <End Type="EduZoneDBModel.STEM" Role="STEM" Multiplicity="1" />
+    <End Type="EduZoneDBModel.GameCoding" Role="GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STEM">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="StemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameCoding_ToTable_3">
+    <End Type="EduZoneDBModel.Game" Role="Game" Multiplicity="1" />
+    <End Type="EduZoneDBModel.GameCoding" Role="GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GameId" Type="Int32" Nullable="false" />
+    <Property Name="ModuleName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Game" Relationship="EduZoneDBModel.FK_Module_ToTable" FromRole="Module" ToRole="Game" />
+    <NavigationProperty Name="StudentCourses" Relationship="EduZoneDBModel.FK_StudentCourses_ToTable_2" FromRole="Module" ToRole="StudentCours" />
+  </EntityType>
+  <Association Name="FK_Module_ToTable">
+    <End Type="EduZoneDBModel.Game" Role="Game" Multiplicity="1" />
+    <End Type="EduZoneDBModel.Module" Role="Module" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Module">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="StudentCours">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="studentId" Type="Int32" Nullable="false" />
+    <Property Name="gameCodingId" Type="Int32" Nullable="false" />
+    <Property Name="moduleId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="GameCoding" Relationship="EduZoneDBModel.FK_StudentCourses_ToTable_1" FromRole="StudentCours" ToRole="GameCoding" />
+    <NavigationProperty Name="Module" Relationship="EduZoneDBModel.FK_StudentCourses_ToTable_2" FromRole="StudentCours" ToRole="Module" />
+    <NavigationProperty Name="Student" Relationship="EduZoneDBModel.FK_StudentCourses_ToTable" FromRole="StudentCours" ToRole="Student" />
+  </EntityType>
+  <Association Name="FK_StudentCourses_ToTable_1">
+    <End Type="EduZoneDBModel.GameCoding" Role="GameCoding" Multiplicity="1" />
+    <End Type="EduZoneDBModel.StudentCours" Role="StudentCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameCoding">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentCours">
+        <PropertyRef Name="gameCodingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourses_ToTable_2">
+    <End Type="EduZoneDBModel.Module" Role="Module" Multiplicity="1" />
+    <End Type="EduZoneDBModel.StudentCours" Role="StudentCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentCours">
+        <PropertyRef Name="moduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourses_ToTable">
+    <End Type="EduZoneDBModel.Student" Role="Student" Multiplicity="1" />
+    <End Type="EduZoneDBModel.StudentCours" Role="StudentCours" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentCours">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ToyReservationHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="GameId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Game" Relationship="EduZoneDBModel.FK_ToyReservationHistory_ToTable" FromRole="ToyReservationHistory" ToRole="Game" />
+  </EntityType>
+  <Association Name="FK_ToyReservationHistory_ToTable">
+    <End Type="EduZoneDBModel.Game" Role="Game" Multiplicity="1" />
+    <End Type="EduZoneDBModel.ToyReservationHistory" Role="ToyReservationHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Game">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToyReservationHistory">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

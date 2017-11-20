@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EduZoneDBModelStoreContainer" CdmEntityContainer="EduZoneDBEntities">
+    <EntitySetMapping Name="Branches">
+      <EntityTypeMapping TypeName="EduZoneDBModel.Branch">
+        <MappingFragment StoreEntitySet="Branches">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="branchName" ColumnName="branchName" />
+          <ScalarProperty Name="branchNumPerSTEM" ColumnName="branchNumPerSTEM" />
+          <ScalarProperty Name="stemID" ColumnName="stemID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Games">
+      <EntityTypeMapping TypeName="EduZoneDBModel.Game">
+        <MappingFragment StoreEntitySet="Games">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="gameName" ColumnName="gameName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STEMs">
+      <EntityTypeMapping TypeName="EduZoneDBModel.STEM">
+        <MappingFragment StoreEntitySet="STEM">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="EduZoneDBModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginHistories">
+      <EntityTypeMapping TypeName="EduZoneDBModel.LoginHistory">
+        <MappingFragment StoreEntitySet="LoginHistory">
+          <ScalarProperty Name="totalCashAmount" ColumnName="totalCashAmount" />
+          <ScalarProperty Name="logoutDateTimeStamp" ColumnName="logoutDateTimeStamp" />
+          <ScalarProperty Name="loginDateTimeStamp" ColumnName="loginDateTimeStamp" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="EduZoneDBModel.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="studentFingurePrint" ColumnName="studentFingurePrint" />
+          <ScalarProperty Name="parentFingrePrint" ColumnName="parentFingrePrint" />
+          <ScalarProperty Name="birthDate" ColumnName="birthDate" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="parentName" ColumnName="parentName" />
+          <ScalarProperty Name="studentName" ColumnName="studentName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoneyLists">
+      <EntityTypeMapping TypeName="EduZoneDBModel.MoneyList">
+        <MappingFragment StoreEntitySet="MoneyList">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Tme" ColumnName="Tme" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AgeRanges">
+      <EntityTypeMapping TypeName="EduZoneDBModel.AgeRange">
+        <MappingFragment StoreEntitySet="AgeRange">
+          <ScalarProperty Name="maxAge" ColumnName="maxAge" />
+          <ScalarProperty Name="minAge" ColumnName="minAge" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GameCodings">
+      <EntityTypeMapping TypeName="EduZoneDBModel.GameCoding">
+        <MappingFragment StoreEntitySet="GameCoding">
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="AgeRangeId" ColumnName="AgeRangeId" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="StemId" ColumnName="StemId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modules">
+      <EntityTypeMapping TypeName="EduZoneDBModel.Module">
+        <MappingFragment StoreEntitySet="Module">
+          <ScalarProperty Name="ModuleId" ColumnName="ModuleId" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentCourses">
+      <EntityTypeMapping TypeName="EduZoneDBModel.StudentCours">
+        <MappingFragment StoreEntitySet="StudentCourses">
+          <ScalarProperty Name="moduleId" ColumnName="moduleId" />
+          <ScalarProperty Name="gameCodingId" ColumnName="gameCodingId" />
+          <ScalarProperty Name="studentId" ColumnName="studentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ToyReservationHistories">
+      <EntityTypeMapping TypeName="EduZoneDBModel.ToyReservationHistory">
+        <MappingFragment StoreEntitySet="ToyReservationHistory">
+          <ScalarProperty Name="GameId" ColumnName="GameId" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

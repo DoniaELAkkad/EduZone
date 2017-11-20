@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ff45d6272c1346d1af005c59f1685f9e" Name="Diagram1">
+        <EntityTypeShape EntityType="EduZoneDBModel.Branch" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduZoneDBModel.Game" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduZoneDBModel.STEM" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EduZoneDBModel.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="EduZoneDBModel.FK_Branches_ToTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EduZoneDBModel.LoginHistory" Width="1.5" PointX="3" PointY="0.875" />
+        <EntityTypeShape EntityType="EduZoneDBModel.Student" Width="1.5" PointX="5.375" PointY="6.75" />
+        <AssociationConnector Association="EduZoneDBModel.FK_LoginHistory_ToTable" />
+        <EntityTypeShape EntityType="EduZoneDBModel.MoneyList" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="EduZoneDBModel.AgeRange" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EduZoneDBModel.GameCoding" Width="1.5" PointX="8" PointY="0.75" />
+        <AssociationConnector Association="EduZoneDBModel.FK_GameCoding_ToTable_2" />
+        <AssociationConnector Association="EduZoneDBModel.FK_GameCoding_ToTable_1" />
+        <AssociationConnector Association="EduZoneDBModel.FK_GameCoding_ToTable" />
+        <AssociationConnector Association="EduZoneDBModel.FK_GameCoding_ToTable_3" />
+        <EntityTypeShape EntityType="EduZoneDBModel.Module" Width="1.5" PointX="8" PointY="4.625" />
+        <AssociationConnector Association="EduZoneDBModel.FK_Module_ToTable" />
+        <EntityTypeShape EntityType="EduZoneDBModel.StudentCours" Width="1.5" PointX="10.25" PointY="3.875" />
+        <AssociationConnector Association="EduZoneDBModel.FK_StudentCourses_ToTable_1" />
+        <AssociationConnector Association="EduZoneDBModel.FK_StudentCourses_ToTable_2" />
+        <AssociationConnector Association="EduZoneDBModel.FK_StudentCourses_ToTable" />
+        <EntityTypeShape EntityType="EduZoneDBModel.ToyReservationHistory" Width="1.5" PointX="8" PointY="7.75" />
+        <AssociationConnector Association="EduZoneDBModel.FK_ToyReservationHistory_ToTable" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

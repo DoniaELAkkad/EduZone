@@ -1,0 +1,16 @@
+E:\Donia\Hazem\Dev\EduZone\DomainModel\bin\Debug\DomainModel.dll
+E:\Donia\Hazem\Dev\EduZone\DomainModel\bin\Debug\DomainModel.pdb
+E:\Donia\Hazem\Dev\EduZone\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
+E:\Donia\Hazem\Dev\EduZone\DomainModel\obj\Debug\DomainModel.dll
+E:\Donia\Hazem\Dev\EduZone\DomainModel\obj\Debug\DomainModel.pdb
+E:\EduZoneApp\EduZone\EduZone\DomainModel\bin\Debug\DomainModel.dll
+E:\EduZoneApp\EduZone\EduZone\DomainModel\bin\Debug\DomainModel.pdb
+E:\EduZoneApp\EduZone\EduZone\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
+E:\EduZoneApp\EduZone\EduZone\DomainModel\obj\Debug\DomainModel.csproj.CoreCompileInputs.cache
+E:\EduZoneApp\EduZone\EduZone\DomainModel\obj\Debug\DomainModel.dll
+E:\EduZoneApp\EduZone\EduZone\DomainModel\obj\Debug\DomainModel.pdb
+E:\Donia\Hazem\V2\EduZone\EduZone\DomainModel\bin\Debug\DomainModel.dll
+E:\Donia\Hazem\V2\EduZone\EduZone\DomainModel\bin\Debug\DomainModel.pdb
+E:\Donia\Hazem\V2\EduZone\EduZone\DomainModel\obj\Debug\DomainModel.csprojResolveAssemblyReference.cache
+E:\Donia\Hazem\V2\EduZone\EduZone\DomainModel\obj\Debug\DomainModel.dll
+E:\Donia\Hazem\V2\EduZone\EduZone\DomainModel\obj\Debug\DomainModel.pdb

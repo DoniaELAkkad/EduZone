@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EduZoneDBDataSet1" targetNamespace="http://tempuri.org/EduZoneDBDataSet1.xsd" xmlns:mstns="http://tempuri.org/EduZoneDBDataSet1.xsd" xmlns="http://tempuri.org/EduZoneDBDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="EduZoneDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="EduZoneDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.EduZone.Properties.Settings.GlobalReference.Default.EduZoneDBConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="STEMTableAdapter" GeneratorDataComponentClassName="STEMTableAdapter" Name="STEM" UserDataComponentName="STEMTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="EduZoneDBConnectionString (Settings)" DbObjectName="dbo.STEM" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Description FROM dbo.STEM</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Description" DataSetColumn="Description" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="EduZoneDBDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="EduZoneDBDataSet1" msprop:Generator_UserDSName="EduZoneDBDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="STEM" msprop:Generator_TableClassName="STEMDataTable" msprop:Generator_TableVarName="tableSTEM" msprop:Generator_TablePropName="STEM" msprop:Generator_RowDeletingName="STEMRowDeleting" msprop:Generator_RowChangingName="STEMRowChanging" msprop:Generator_RowEvHandlerName="STEMRowChangeEventHandler" msprop:Generator_RowDeletedName="STEMRowDeleted" msprop:Generator_UserTableName="STEM" msprop:Generator_RowChangedName="STEMRowChanged" msprop:Generator_RowEvArgName="STEMRowChangeEvent" msprop:Generator_RowClassName="STEMRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Description" msprop:Generator_ColumnVarNameInTable="columnDescription" msprop:Generator_ColumnPropNameInRow="Description" msprop:Generator_ColumnPropNameInTable="DescriptionColumn" msprop:Generator_UserColumnName="Description">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="225" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

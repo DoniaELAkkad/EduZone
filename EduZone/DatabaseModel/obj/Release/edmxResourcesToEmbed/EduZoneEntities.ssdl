@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EduZoneDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AgeRange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="minAge" Type="int" Nullable="false" />
+    <Property Name="maxAge" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Branches">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="branchName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="branchNumPerSTEM" Type="int" Nullable="false" />
+    <Property Name="stemID" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GameCoding">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StemId" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="BranchId" Type="int" Nullable="false" />
+    <Property Name="AgeRangeId" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="GameId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Games">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="gameName" Type="varchar" MaxLength="225" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="loginDateTimeStamp" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="logoutDateTimeStamp" Type="datetime2" Precision="7" />
+    <Property Name="totalCashAmount" Type="money" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GameId" Type="int" Nullable="false" />
+    <Property Name="ModuleName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ModuleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MoneyList">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tme" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="money" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="STEM">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="225" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="parentName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MobileNumber" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="birthDate" Type="date" Nullable="false" />
+    <Property Name="parentFingrePrint" Type="nvarchar(max)" />
+    <Property Name="studentFingurePrint" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="StudentCourses">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="studentId" Type="int" Nullable="false" />
+    <Property Name="gameCodingId" Type="int" Nullable="false" />
+    <Property Name="moduleId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ToyReservationHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="EndDateTime" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="GameId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Branches_ToTable">
+    <End Role="STEM" Type="Self.STEM" Multiplicity="1" />
+    <End Role="Branches" Type="Self.Branches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STEM">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Branches">
+        <PropertyRef Name="stemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameCoding_ToTable">
+    <End Role="STEM" Type="Self.STEM" Multiplicity="1" />
+    <End Role="GameCoding" Type="Self.GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="STEM">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="StemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameCoding_ToTable_1">
+    <End Role="Branches" Type="Self.Branches" Multiplicity="1" />
+    <End Role="GameCoding" Type="Self.GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Branches">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="BranchId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameCoding_ToTable_2">
+    <End Role="AgeRange" Type="Self.AgeRange" Multiplicity="1" />
+    <End Role="GameCoding" Type="Self.GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AgeRange">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="AgeRangeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GameCoding_ToTable_3">
+    <End Role="Games" Type="Self.Games" Multiplicity="1" />
+    <End Role="GameCoding" Type="Self.GameCoding" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="GameCoding">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoginHistory_ToTable">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="LoginHistory" Type="Self.LoginHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="LoginHistory">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Module_ToTable">
+    <End Role="Games" Type="Self.Games" Multiplicity="1" />
+    <End Role="Module" Type="Self.Module" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Module">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourses_ToTable">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentCourses" Type="Self.StudentCourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentCourses">
+        <PropertyRef Name="studentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourses_ToTable_1">
+    <End Role="GameCoding" Type="Self.GameCoding" Multiplicity="1" />
+    <End Role="StudentCourses" Type="Self.StudentCourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GameCoding">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentCourses">
+        <PropertyRef Name="gameCodingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StudentCourses_ToTable_2">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="StudentCourses" Type="Self.StudentCourses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StudentCourses">
+        <PropertyRef Name="moduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToyReservationHistory_ToTable">
+    <End Role="Games" Type="Self.Games" Multiplicity="1" />
+    <End Role="ToyReservationHistory" Type="Self.ToyReservationHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Games">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToyReservationHistory">
+        <PropertyRef Name="GameId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EduZoneDBModelStoreContainer">
+    <EntitySet Name="AgeRange" EntityType="Self.AgeRange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Branches" EntityType="Self.Branches" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GameCoding" EntityType="Self.GameCoding" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Games" EntityType="Self.Games" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginHistory" EntityType="Self.LoginHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MoneyList" EntityType="Self.MoneyList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="STEM" EntityType="Self.STEM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentCourses" EntityType="Self.StudentCourses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ToyReservationHistory" EntityType="Self.ToyReservationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Branches_ToTable" Association="Self.FK_Branches_ToTable">
+      <End Role="STEM" EntitySet="STEM" />
+      <End Role="Branches" EntitySet="Branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameCoding_ToTable" Association="Self.FK_GameCoding_ToTable">
+      <End Role="STEM" EntitySet="STEM" />
+      <End Role="GameCoding" EntitySet="GameCoding" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameCoding_ToTable_1" Association="Self.FK_GameCoding_ToTable_1">
+      <End Role="Branches" EntitySet="Branches" />
+      <End Role="GameCoding" EntitySet="GameCoding" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameCoding_ToTable_2" Association="Self.FK_GameCoding_ToTable_2">
+      <End Role="AgeRange" EntitySet="AgeRange" />
+      <End Role="GameCoding" EntitySet="GameCoding" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GameCoding_ToTable_3" Association="Self.FK_GameCoding_ToTable_3">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="GameCoding" EntitySet="GameCoding" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoginHistory_ToTable" Association="Self.FK_LoginHistory_ToTable">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="LoginHistory" EntitySet="LoginHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Module_ToTable" Association="Self.FK_Module_ToTable">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="Module" EntitySet="Module" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourses_ToTable" Association="Self.FK_StudentCourses_ToTable">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="StudentCourses" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourses_ToTable_1" Association="Self.FK_StudentCourses_ToTable_1">
+      <End Role="GameCoding" EntitySet="GameCoding" />
+      <End Role="StudentCourses" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StudentCourses_ToTable_2" Association="Self.FK_StudentCourses_ToTable_2">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="StudentCourses" EntitySet="StudentCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToyReservationHistory_ToTable" Association="Self.FK_ToyReservationHistory_ToTable">
+      <End Role="Games" EntitySet="Games" />
+      <End Role="ToyReservationHistory" EntitySet="ToyReservationHistory" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

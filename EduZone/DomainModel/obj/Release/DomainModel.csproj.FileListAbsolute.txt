@@ -1,0 +1,10 @@
+E:\Donia\Hazem\Dev\EduZone\DomainModel\bin\Release\DomainModel.dll
+E:\Donia\Hazem\Dev\EduZone\DomainModel\bin\Release\DomainModel.pdb
+E:\Donia\Hazem\Dev\EduZone\DomainModel\obj\Release\DomainModel.csprojResolveAssemblyReference.cache
+E:\Donia\Hazem\Dev\EduZone\DomainModel\obj\Release\DomainModel.dll
+E:\Donia\Hazem\Dev\EduZone\DomainModel\obj\Release\DomainModel.pdb
+E:\EduZoneApp\EduZone\EduZone\DomainModel\bin\Release\DomainModel.dll
+E:\EduZoneApp\EduZone\EduZone\DomainModel\bin\Release\DomainModel.pdb
+E:\EduZoneApp\EduZone\EduZone\DomainModel\obj\Release\DomainModel.csproj.CoreCompileInputs.cache
+E:\EduZoneApp\EduZone\EduZone\DomainModel\obj\Release\DomainModel.dll
+E:\EduZoneApp\EduZone\EduZone\DomainModel\obj\Release\DomainModel.pdb
