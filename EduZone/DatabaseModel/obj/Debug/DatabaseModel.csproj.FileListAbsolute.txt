@@ -34,3 +34,4 @@ E:\Donia\Hazem\V2\EduZone\EduZone\DatabaseModel\bin\Debug\EntityFramework.xml
 E:\Donia\Hazem\V2\EduZone\EduZone\DatabaseModel\bin\Debug\EntityFramework.SqlServer.xml
 E:\Donia\Hazem\V2\EduZone\EduZone\DatabaseModel\obj\Debug\DatabaseModel.dll
 E:\Donia\Hazem\V2\EduZone\EduZone\DatabaseModel\obj\Debug\DatabaseModel.pdb
+E:\Donia\Hazem\V2\EduZone\EduZone\DatabaseModel\obj\Debug\DatabaseModel.csprojResolveAssemblyReference.cache

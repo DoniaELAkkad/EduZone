@@ -158,14 +158,26 @@ namespace EduZone
 
         private void clearallLists()
         {
-            if(lst_Science.Items.Count==0)
+            if (lst_Science.Items.Count != 0)
+            {
+                lst_Science.DataSource = null;
                 lst_Science.Items.Clear();
-            if (lst_Technology.Items.Count == 0)
+            }
+            if (lst_Technology.Items.Count != 0)
+            {
+                lst_Technology.DataSource = null;
                 lst_Technology.Items.Clear();
-            if (lst_Engineering.Items.Count == 0)
+            }
+            if (lst_Engineering.Items.Count != 0)
+            {
+                lst_Engineering.DataSource = null;
                 lst_Engineering.Items.Clear();
-            if (lst_Math.Items.Count == 0)
+            }
+            if (lst_Math.Items.Count != 0)
+            {
+                lst_Math.DataSource = null;
                 lst_Math.Items.Clear();
+            }
         }
 
         private List<int> GetTakenModulesIdAllStudent(List<Student> students)
@@ -534,10 +546,47 @@ namespace EduZone
                 {
                     UpdateMoney(lst_MoneyList.SelectedValue.ToString());
                 }
-                if( gameCoding!=null)
-                UpdateToyReservation(gameCoding.Game);
-                lb_ChooseError.Text = "Successfully Added";
-                lb_ChooseError.Visible = true;
+                if (gameCoding != null)
+                {
+                    UpdateToyReservation(gameCoding.Game);
+                    lb_ChooseError.Text = "Successfully Added";
+                    lb_ChooseError.Visible = true;
+                    clearallLists();
+                    tbStudentName.Text = String.Empty;
+                    tb_Age.Text = String.Empty;
+                    tb_FingSearch.Text = String.Empty;
+                    tb_GroupMan.Text = String.Empty;
+                    tb_GroupName.Text = String.Empty;
+                    tb_MobileSearch.Text = String.Empty;
+                    tb_ParentNameShow.Text = String.Empty;
+                    tb_StudentMobile.Text = String.Empty;
+                    if (cb_Branch.Items.Count != 0)
+                    {
+                        cb_Branch.Items.Clear();
+                    }
+                    if (lst_KidsNames.Items.Count != 0)
+                    {
+                        lst_KidsNames.Items.Clear();
+                    }
+                    if (lst_groupName.Items.Count != 0)
+                    {
+                        lst_groupName.Items.Clear();
+                    }
+                    int i=0;
+                    int gpIndexToRemove=-1;
+                    for (i=0;i<runningGroups.Count;i++)
+                    {
+                        Group group = runningGroups[i];
+                       
+                        if (group.ageRange.ID == gameCoding.AgeRange.ID)
+                        {
+                            gpIndexToRemove = i;
+                        }
+                    }
+                    if(gpIndexToRemove!=-1)
+                    runningGroups.RemoveAt(gpIndexToRemove);
+                }
+
             }
         }
         private void UpdateToyReservation(Games game)
@@ -659,18 +708,47 @@ namespace EduZone
                 {
                     UpdateMoney(lst_MoneyList.SelectedValue.ToString());
                 }
-                if( gameCoding!=null)
-                UpdateToyReservation(gameCoding.Game);
-                lb_ChooseManError.Text = "Successfully Added";
-                lb_ChooseManError.Visible = true;
-                lb_ChooseManError.BringToFront();
-                tb_StudentMobile.Text = "";
-                tb_FingSearch.Text = "";
-                lst_groupName.Items.Clear();
-                lst_Engineering.Items.Clear();
-                lst_Science.Items.Clear();
-                lst_Technology.Items.Clear();
-                lst_Math.Items.Clear();
+                if (gameCoding != null)
+                {
+                    UpdateToyReservation(gameCoding.Game);
+                    lb_ChooseManError.Text = "Successfully Added";
+                    lb_ChooseManError.Visible = true;
+                    lb_ChooseManError.BringToFront();
+                    clearallLists();
+                    tbStudentName.Text = String.Empty;
+                    tb_Age.Text = String.Empty;
+                    tb_FingSearch.Text = String.Empty;
+                    tb_GroupMan.Text = String.Empty;
+                    tb_GroupName.Text = String.Empty;
+                    tb_MobileSearch.Text = String.Empty;
+                    tb_ParentNameShow.Text = String.Empty;
+                    tb_StudentMobile.Text = String.Empty;
+                    if (cb_Branch.Items.Count != 0)
+                    {
+                        cb_Branch.Items.Clear();
+                    }
+                    if (lst_KidsNames.Items.Count != 0)
+                    {
+                        lst_KidsNames.Items.Clear();
+                    }
+                    if (lst_groupName.Items.Count != 0)
+                    {
+                        lst_groupName.Items.Clear();
+                    }
+                    int i = 0;
+                    int gpIndexToRemove = -1;
+                    for (i = 0; i < runningGroups.Count; i++)
+                    {
+                        Group group = runningGroups[i];
+
+                        if (group.ageRange.ID == gameCoding.AgeRange.ID)
+                        {
+                            gpIndexToRemove = i;
+                        }
+                    }
+                    if (gpIndexToRemove != -1)
+                        runningGroups.RemoveAt(gpIndexToRemove);
+                }
             }
         }
 
