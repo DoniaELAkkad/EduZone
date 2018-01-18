@@ -745,6 +745,7 @@
             // lst_Math
             // 
             this.lst_Math.FormattingEnabled = true;
+            this.lst_Math.HorizontalScrollbar = true;
             this.lst_Math.Location = new System.Drawing.Point(628, 11);
             this.lst_Math.Name = "lst_Math";
             this.lst_Math.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -754,6 +755,7 @@
             // lst_Engineering
             // 
             this.lst_Engineering.FormattingEnabled = true;
+            this.lst_Engineering.HorizontalScrollbar = true;
             this.lst_Engineering.Location = new System.Drawing.Point(463, 11);
             this.lst_Engineering.Name = "lst_Engineering";
             this.lst_Engineering.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -763,6 +765,7 @@
             // lst_Technology
             // 
             this.lst_Technology.FormattingEnabled = true;
+            this.lst_Technology.HorizontalScrollbar = true;
             this.lst_Technology.Location = new System.Drawing.Point(267, 13);
             this.lst_Technology.Name = "lst_Technology";
             this.lst_Technology.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -772,6 +775,7 @@
             // lst_Science
             // 
             this.lst_Science.FormattingEnabled = true;
+            this.lst_Science.HorizontalScrollbar = true;
             this.lst_Science.Location = new System.Drawing.Point(60, 11);
             this.lst_Science.Name = "lst_Science";
             this.lst_Science.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
